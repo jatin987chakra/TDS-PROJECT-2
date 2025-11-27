@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Request, BackgroundTasks
-from fastapi.responses import JSONResponse
+from fastapi.responses impoJSONResponse, HTMLResponse
 from fastapi.exceptions import HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from agent import run_agent
@@ -22,6 +22,18 @@ app.add_middleware(
     allow_headers=["*"],
 )
 START_TIME = time.time()
+
+@app.get("/")
+def root():
+        return HTMLResponse("""
+            <html>
+                    <body>
+                                <h1>LLM Analysis Quiz Solver</h1>
+                                            <p>API Endpoint: POST /solve</p>
+                                                        <p>Health Check: GET /healthz</p>
+                                                                </body>
+                                                                    </html>
+                                                                        """)
 @app.get("/healthz")
 def healthz():
     """Simple liveness check."""
