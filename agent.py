@@ -147,12 +147,17 @@ app = graph.compile()
 # TEST
 # -------------------------------------------------
 def run_agent(url: str) -> str:
-    app.invoke({
-        "messages": [{"role": "user", "content": url}]},
+    print(f"\n[AGENT START] Fetching: {url}\n")
+
+    # 🔥 you MUST capture the output of app.invoke
+    result = app.invoke(
+        {
+            "messages": [{"role": "user", "content": url}]
+        },
         config={"recursion_limit": 200},
     )
 
-
+    # 🔥 Now print the final result safely
     print("\n===== AGENT FINAL RESULT =====")
     print(result)
     print("===== END RESULT =====\n")
