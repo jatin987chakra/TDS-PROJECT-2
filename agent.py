@@ -151,5 +151,12 @@ def run_agent(url: str) -> str:
         "messages": [{"role": "user", "content": url}]},
         config={"recursion_limit": 200},
     )
-    print("Tasks completed succesfully")
+
+
+    print("\n===== AGENT FINAL RESULT =====")
+    print(result)
+    print("===== END RESULT =====\n")
+
+    print("Tasks completed successfully")
+    return "done"
 
