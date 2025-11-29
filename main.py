@@ -8,6 +8,9 @@ import uvicorn
 import os
 from shared_store import url_time, BASE64_STORE
 import time
+import warnings
+warnings.filterwarnings("ignore", category=SyntaxWarning)
+
 
 load_dotenv()
 
